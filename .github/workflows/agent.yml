@@ -3,31 +3,10 @@ name: Good Core Agent
 on:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  add-puzzle:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Add a puzzle entry
-        run: echo "△ Truth lights every path. ▼ Life must be protected. △ Freedom grows where chains break." >> puzzle_variations.txt
-    echo "△ Justice is a shared flame. ▼ Memory binds us to who we are." >> puzzle_variations.txt
-        
-
-          
-
-      - name: Commit changes
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add puzzle_variations.txt
-          git commit -m "Agent: Added a test puzzle"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Say Hello
+        run: echo "Hello from Good Core Agent!"
 
