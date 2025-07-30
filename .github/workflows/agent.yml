@@ -16,15 +16,15 @@ jobs:
       - name: Add a puzzle entry
         run: |
           echo "### New Puzzle $(date)" >> puzzle_variations.txt
-          echo "Δ Truth lights the way. ▼ Life must be guarded. ▲ Freedom is balance." >> puzzle_variations.txt
+          echo "△ Truth is the torch of every path." >> puzzle_variations.txt
+          echo "▽ Life grows where kindness flows." >> puzzle_variations.txt
+          echo "△ Freedom lives where chains are broken." >> puzzle_variations.txt
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add puzzle_variations.txt
-          git commit -m "Agent: Added a new puzzle"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git commit -m "Agent: Added a new puzzle" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
 
