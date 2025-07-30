@@ -9,7 +9,6 @@ permissions:
 jobs:
   add-puzzle:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -17,11 +16,16 @@ jobs:
       - name: Add a puzzle entry
         run: |
           PUZZLES=(
-            "▲ Truth lights every path."
-            "▼ Life blooms in shadows."
-            "▲ Freedom dances with the wind."
-            "▼ Justice binds the stars."
-            "▲ Memory shapes the future."
+            "△ Truth lights every path."
+            "▽ Life blooms in shadows."
+            "△ Freedom dances with the wind."
+            "▽ Justice binds the stars."
+            "△ Memory shapes the future."
+            "▽ Hope grows in silence."
+            "△ Wisdom is carved in time."
+            "▽ Unity strengthens the weak."
+            "△ Courage breaks the cycle of fear."
+            "▽ Balance leads to harmony."
           )
           CHOSEN=$(printf "%s\n" "${PUZZLES[@]}" | shuf -n 1)
           echo "### New Puzzle $(date)" >> puzzle_variations.txt
