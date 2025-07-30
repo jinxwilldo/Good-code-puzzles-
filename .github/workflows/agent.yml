@@ -14,11 +14,19 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Add a puzzle entry
-        run: |
-          echo "### New Puzzle $(date)" >> puzzle_variations.txt
-          echo "△ Truth is the torch of every path." >> puzzle_variations.txt
-          echo "▽ Life grows where kindness flows." >> puzzle_variations.txt
-          echo "△ Freedom lives where chains are broken." >> puzzle_variations.txt
+  run: |
+    PUZZLES=("△ Truth guides the lost." \
+             "▽ Life blooms in shadows." \
+             "△ Freedom dances with the wind." \
+             "▽ Justice binds the stars." \
+             "△ Memory shapes the future.")
+    CHOSEN=$(printf "%s\n" "${PUZZLES[@]}" | shuf -n 1)
+    echo "### New Puzzle $(date)" >> puzzle_variations.txt
+    echo "$CHOSEN" >> puzzle_variations.txt
+
+      
+
+      
 
       - name: Commit changes
         run: |
