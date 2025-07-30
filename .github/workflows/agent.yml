@@ -6,9 +6,6 @@ on:
     - cron: '0 6 * * *'   # Runs every day at 06:00 UTC
     - cron: '0 18 * * *'  # Runs every day at 18:00 UTC
 
-
-
-
 permissions:
   contents: write
 
@@ -23,15 +20,11 @@ jobs:
         run: |
           PUZZLES=(
             "△ Truth lights every path."
-            "▽ Life blooms in shadows."
+            "▼ Life blooms in shadows."
             "△ Freedom dances with the wind."
-            "▽ Justice binds the stars."
+            "▼ Justice binds the stars."
             "△ Memory shapes the future."
-            "▽ Hope grows in silence."
-            "△ Wisdom is carved in time."
-            "▽ Unity strengthens the weak."
-            "△ Courage breaks the cycle of fear."
-            "▽ Balance leads to harmony."
+            "▼ Hope grows in silence."
           )
           CHOSEN=$(printf "%s\n" "${PUZZLES[@]}" | shuf -n 1)
           echo "### New Puzzle $(date)" >> puzzle_variations.txt
