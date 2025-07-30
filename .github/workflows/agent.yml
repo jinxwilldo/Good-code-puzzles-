@@ -1,0 +1,25 @@
+name: Good Core Agent
+
+on:
+  workflow_dispatch:
+
+jobs:
+  add-puzzle:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Add a puzzle entry
+        run: |
+          echo "### New Puzzle $(date)" >> puzzle_variations.txt
+          echo "This is a test puzzle added by the agent." >> puzzle_variations.txt
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add puzzle_variations.txt
+          git commit -m "Agent: Added a test puzzle"
+          git push
